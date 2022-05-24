@@ -13,7 +13,7 @@ function Appi(_ref) {
   var children = _ref.children,
       logging = _ref.logging;
   (0, _react.useEffect)(function () {
-    (0, _appi_react.loadAppi)({
+    loadAppi({
       autoLogin: true,
       logging: logging
     });
