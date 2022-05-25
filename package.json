@@ -1,6 +1,6 @@
 {
   "name": "appi_react_components",
-  "version": "1.3.1",
+  "version": "1.3.5",
   "private": false,
   "description": "Appi ReactJS component library",
   "author": "justdoityourself",
@@ -13,7 +13,9 @@
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "appi_react":"*",
+    "grid-variable-template":"*"
   },
   "scripts": {
     "start": "react-scripts start",

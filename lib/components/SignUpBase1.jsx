@@ -1,6 +1,7 @@
 import {Card,CardActions,CardContent,Button,TextField,Typography,Checkbox} from '@mui/material';
 import {signup,login} from 'appi_react'
 import {useState} from 'react';
+import {gvt} from 'grid-variable-template'
 
 /*
 Callback: onSignUp, called when a sign up completes and after login.

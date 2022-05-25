@@ -69,6 +69,12 @@ Object.defineProperty(exports, "SignUpBase1", {
     return _SignUpBase.default;
   }
 });
+Object.defineProperty(exports, "Theme", {
+  enumerable: true,
+  get: function get() {
+    return _Theme.default;
+  }
+});
 Object.defineProperty(exports, "Walk", {
   enumerable: true,
   get: function get() {
@@ -79,6 +85,8 @@ Object.defineProperty(exports, "Walk", {
 var _LoginBase = _interopRequireDefault(require("./components/LoginBase1"));
 
 var _SignUpBase = _interopRequireDefault(require("./components/SignUpBase1"));
+
+var _Theme = _interopRequireDefault(require("./components/Theme"));
 
 var _Appi = _interopRequireDefault(require("./composition/Appi"));
 
