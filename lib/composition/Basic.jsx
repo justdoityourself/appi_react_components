@@ -1,10 +1,10 @@
 import {loadBasic} from 'appi_react'
 import {useEffect} from 'react'
 
-export default function Appi({children,logging})
+export default function Basic({children,logging})
 {
     useEffect(()=> {
-      loadAppi({autoLogin:true,logging});
+      loadBasic({autoLogin:true,logging});
     },[])
 
     return (children instanceof Function) ? children({}) : children;

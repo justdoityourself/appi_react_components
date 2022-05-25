@@ -3,17 +3,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Basic;
+exports.default = Plot;
 
 var _appi_react = require("appi_react");
 
 var _react = require("react");
 
-function Basic(_ref) {
+function Plot(_ref) {
   var children = _ref.children,
-      logging = _ref.logging;
+      logging = _ref.logging,
+      format = _ref.format;
+  //TODO
   (0, _react.useEffect)(function () {
-    (0, _appi_react.loadBasic)({
+    (0, _appi_react.loadAppi)({
       autoLogin: true,
       logging: logging
     });

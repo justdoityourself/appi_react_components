@@ -4,18 +4,28 @@ import {appiKeys} from 'appi_react'
 
 // https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
 // https://dev.to/bhupendra1011/composition-vs-context-in-react-5cmb
-export default function Walk({children,object,path,parse})
+export default function Walk({children,object,path,parse,format, type,access})
 {
+    const client = window.AppiClient;
     let [objects,setObjects] = useState({});
+
+    if(!type)
+        type = "user";
+
+    if(!access)
+        access = "public";
+
+    if(!parse)
+        parse = (id)=>client.LookupId(type,id,access);
 
     useEffect(()=>{
         (async ()=>{
-            let resolve = object;
+            let resolve = object || {};
 
             if(path)
             {
               for(const step of path.split('/'))
-                resolve = resolve[step];
+                resolve = resolve[step] || {};
             }
 
             let walk = {};
@@ -23,9 +33,10 @@ export default function Walk({children,object,path,parse})
             {
                 const resource = parse ? parse(key) : key;
 
-                const far = await handler.Far(resource);
+                const _far = await client.Far(resource);
+                const far = JSON.parse(_far||"{}");
 
-                const[key] = JSON.parse(far||"{}");
+                walk[key] = format ? format(far) : far;
             }
 
             setObjects(walk);

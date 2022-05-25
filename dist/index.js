@@ -9,6 +9,12 @@ Object.defineProperty(exports, "Appi", {
     return _Appi.default;
   }
 });
+Object.defineProperty(exports, "Basic", {
+  enumerable: true,
+  get: function get() {
+    return _Basic.default;
+  }
+});
 Object.defineProperty(exports, "Hook", {
   enumerable: true,
   get: function get() {
@@ -39,6 +45,24 @@ Object.defineProperty(exports, "LoginState", {
     return _LoginState.default;
   }
 });
+Object.defineProperty(exports, "Page", {
+  enumerable: true,
+  get: function get() {
+    return _Page.default;
+  }
+});
+Object.defineProperty(exports, "Plot", {
+  enumerable: true,
+  get: function get() {
+    return _Plot.default;
+  }
+});
+Object.defineProperty(exports, "Secure", {
+  enumerable: true,
+  get: function get() {
+    return _Secure.default;
+  }
+});
 Object.defineProperty(exports, "SignUpBase1", {
   enumerable: true,
   get: function get() {
@@ -67,5 +91,13 @@ var _Login = _interopRequireDefault(require("./composition/Login"));
 var _LoginState = _interopRequireDefault(require("./composition/LoginState"));
 
 var _Walk = _interopRequireDefault(require("./composition/Walk"));
+
+var _Basic = _interopRequireDefault(require("./composition/Basic"));
+
+var _Page = _interopRequireDefault(require("./composition/Page"));
+
+var _Plot = _interopRequireDefault(require("./composition/Plot"));
+
+var _Secure = _interopRequireDefault(require("./composition/Secure"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

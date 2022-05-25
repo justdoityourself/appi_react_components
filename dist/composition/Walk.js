@@ -37,22 +37,31 @@ function Walk(_ref) {
   var children = _ref.children,
       object = _ref.object,
       path = _ref.path,
-      parse = _ref.parse;
+      parse = _ref.parse,
+      format = _ref.format,
+      type = _ref.type,
+      access = _ref.access;
+  var client = window.AppiClient;
 
   var _useState = (0, _react.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
       objects = _useState2[0],
       setObjects = _useState2[1];
 
+  if (!type) type = "user";
+  if (!access) access = "public";
+  if (!parse) parse = function parse(id) {
+    return client.LookupId(type, id, access);
+  };
   (0, _react.useEffect)(function () {
     _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var resolve, _iterator, _step, step, walk, _iterator2, _step2, key, resource, far, _JSON$parse, _JSON$parse2, _key;
+      var resolve, _iterator, _step, step, walk, _iterator2, _step2, key, resource, _far, far;
 
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              resolve = object;
+              resolve = object || {};
 
               if (path) {
                 _iterator = _createForOfIteratorHelper(path.split('/'));
@@ -60,7 +69,7 @@ function Walk(_ref) {
                 try {
                   for (_iterator.s(); !(_step = _iterator.n()).done;) {
                     step = _step.value;
-                    resolve = resolve[step];
+                    resolve = resolve[step] || {};
                   }
                 } catch (err) {
                   _iterator.e(err);
@@ -77,49 +86,50 @@ function Walk(_ref) {
 
             case 6:
               if ((_step2 = _iterator2.n()).done) {
-                _context.next = 15;
+                _context.next = 16;
                 break;
               }
 
               key = _step2.value;
-              resource = parse ? parse(_key) : _key;
+              resource = parse ? parse(key) : key;
               _context.next = 11;
-              return handler.Far(resource);
+              return client.Far(resource);
 
             case 11:
-              far = _context.sent;
-              _JSON$parse = JSON.parse(far || "{}"), _JSON$parse2 = _slicedToArray(_JSON$parse, 1), _key = _JSON$parse2[0];
+              _far = _context.sent;
+              far = JSON.parse(_far || "{}");
+              walk[key] = format ? format(far) : far;
 
-            case 13:
+            case 14:
               _context.next = 6;
               break;
 
-            case 15:
-              _context.next = 20;
+            case 16:
+              _context.next = 21;
               break;
 
-            case 17:
-              _context.prev = 17;
+            case 18:
+              _context.prev = 18;
               _context.t0 = _context["catch"](4);
 
               _iterator2.e(_context.t0);
 
-            case 20:
-              _context.prev = 20;
+            case 21:
+              _context.prev = 21;
 
               _iterator2.f();
 
-              return _context.finish(20);
-
-            case 23:
-              setObjects(walk);
+              return _context.finish(21);
 
             case 24:
+              setObjects(walk);
+
+            case 25:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[4, 17, 20, 23]]);
+      }, _callee, null, [[4, 18, 21, 24]]);
     }))();
   }, [object]);
   return children([objects, setObjects]);
