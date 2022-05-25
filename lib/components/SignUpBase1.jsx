@@ -94,7 +94,7 @@ export default function SignUpBase({onSignUp,onWaiting,toLogin,Logo, basic}) {
       </Card>
       <div className={'gvt'} style={{'--gr':'1fr auto','--gc':'1fr'}}>
         <div></div>
-        <span style={{marginBottom:'16px'}}>Already have an account? <Button onClick={()=>toLogin()} color="secondary" variant="text">Login</Button></span>
+        <span style={{fontSize:'16px',marginBottom:'16px'}}>Already have an account? <Button onClick={()=>toLogin()} color="secondary" variant="text">Login</Button></span>
       </div>
     </div>
   );

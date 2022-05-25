@@ -193,6 +193,7 @@ function LoginBase(_ref) {
       },
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {}), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
         style: {
+          fontSize: '16px',
           marginBottom: '16px'
         },
         children: ["Don't have an account? ", /*#__PURE__*/(0, _jsxRuntime.jsx)(_material.Button, {
