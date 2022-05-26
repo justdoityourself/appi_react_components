@@ -31,7 +31,7 @@ function MailBase(_ref) {
       secondary = _ref.secondary;
   var shouldDark = (0, _material.useMediaQuery)('(prefers-color-scheme: dark)');
 
-  var _useState = (0, _react.useState)(window.localStorage.dark || shouldDark),
+  var _useState = (0, _react.useState)(window.localStorage.dark == "true" || shouldDark),
       _useState2 = _slicedToArray(_useState, 2),
       dark = _useState2[0],
       _setDark = _useState2[1];

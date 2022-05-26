@@ -5,7 +5,7 @@ import {useState,useMemo,Fragment} from 'react';
 
 export default function MailBase({children,primary,secondary}) {
   const shouldDark = useMediaQuery('(prefers-color-scheme: dark)');
-  const [dark, _setDark] = useState(window.localStorage.dark || shouldDark);
+  const [dark, _setDark] = useState(window.localStorage.dark == "true" || shouldDark);
 
   const setDark = dark => {
     window.localStorage.dark = dark;
