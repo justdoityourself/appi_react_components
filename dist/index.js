@@ -69,6 +69,12 @@ Object.defineProperty(exports, "Settings1", {
     return _Settings.default;
   }
 });
+Object.defineProperty(exports, "Settings2", {
+  enumerable: true,
+  get: function get() {
+    return _Settings2.default;
+  }
+});
 Object.defineProperty(exports, "SignUpBase1", {
   enumerable: true,
   get: function get() {
@@ -93,6 +99,8 @@ var _LoginBase = _interopRequireDefault(require("./components/LoginBase1"));
 var _SignUpBase = _interopRequireDefault(require("./components/SignUpBase1"));
 
 var _Settings = _interopRequireDefault(require("./components/Settings1"));
+
+var _Settings2 = _interopRequireDefault(require("./components/Settings2"));
 
 var _Theme = _interopRequireDefault(require("./components/Theme"));
 

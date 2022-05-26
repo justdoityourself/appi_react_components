@@ -3,18 +3,19 @@ import {Storage, Person,Dns,Settings,SettingsBrightness} from '@mui/icons-materi
 
 import { logout,useAppi } from 'appi_react'
 import { CirclePicker } from 'react-color';
-import { useState,useEffect } from 'react';
+import { useState/*,useEffect*/,useCallback } from 'react';
        
-
+//This file uses a manual optimistic render pattern
 export default function _Settings({dark, setDark,setAction}) {
     const [name,setName] = useState();
     const [color,setColor] = useState();
     const [saving,setSaving] = useState();
-    const [user,setUser] = useAppi("@user");
-
-    useEffect(()=>{
+    const [user,setUser] = useAppi("@user",{},useCallback(()=>{
+        setName();
+        setColor();
         setSaving(false);
-    },[user])
+    }));
+
     //const [ip,setIp] = useState("0.0.0.0");
     //const userId = window.AppiClient.UserId();
 
