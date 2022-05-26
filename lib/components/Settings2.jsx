@@ -48,8 +48,6 @@ export default function _Settings({dark, setDark,setAction}) {
                         onChangeComplete={({hex})=>setUser({"~public":{profile:{color:hex}}})}
                     />
                     <Button style={{width:'100%'}} color='secondary' variant="outlined" size="small" onClick={() => logout()}>Logout</Button>
-
-
                 </div>
 
             </CardContent>
