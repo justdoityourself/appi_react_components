@@ -51,15 +51,17 @@ function Walk(_ref) {
   if (!type) type = "user";
   if (!access) access = "public";
   if (!parse) parse = function parse(id) {
-    return client.LookupId(type, id, access);
+    return (0, _appi_react.serialize)(function () {
+      return client.LookupId(type, id, access);
+    });
   };
   (0, _react.useEffect)(function () {
     _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var resolve, _iterator, _step, step, walk, _iterator2, _step2, key, resource, _far, far;
+      var resolve, _iterator, _step, step, walk, _iterator2, _step2, _loop;
 
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
+      return _regeneratorRuntime().wrap(function _callee$(_context2) {
         while (1) {
-          switch (_context.prev = _context.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
               resolve = object || {};
 
@@ -80,56 +82,92 @@ function Walk(_ref) {
 
               walk = {};
               _iterator2 = _createForOfIteratorHelper((0, _appi_react.appiKeys)(resolve));
-              _context.prev = 4;
+              _context2.prev = 4;
+              _loop = /*#__PURE__*/_regeneratorRuntime().mark(function _loop() {
+                var key, resource, _far, far;
+
+                return _regeneratorRuntime().wrap(function _loop$(_context) {
+                  while (1) {
+                    switch (_context.prev = _context.next) {
+                      case 0:
+                        key = _step2.value;
+
+                        if (!parse) {
+                          _context.next = 7;
+                          break;
+                        }
+
+                        _context.next = 4;
+                        return parse(key);
+
+                      case 4:
+                        _context.t0 = _context.sent;
+                        _context.next = 8;
+                        break;
+
+                      case 7:
+                        _context.t0 = key;
+
+                      case 8:
+                        resource = _context.t0;
+                        _context.next = 11;
+                        return (0, _appi_react.serialize)(function () {
+                          return client.Far(resource);
+                        });
+
+                      case 11:
+                        _far = _context.sent;
+                        far = JSON.parse(_far || "{}");
+                        walk[key] = format ? format(far) : far;
+
+                      case 14:
+                      case "end":
+                        return _context.stop();
+                    }
+                  }
+                }, _loop);
+              });
 
               _iterator2.s();
 
-            case 6:
+            case 7:
               if ((_step2 = _iterator2.n()).done) {
-                _context.next = 16;
+                _context2.next = 11;
                 break;
               }
 
-              key = _step2.value;
-              resource = parse ? parse(key) : key;
-              _context.next = 11;
-              return client.Far(resource);
+              return _context2.delegateYield(_loop(), "t0", 9);
+
+            case 9:
+              _context2.next = 7;
+              break;
 
             case 11:
-              _far = _context.sent;
-              far = JSON.parse(_far || "{}");
-              walk[key] = format ? format(far) : far;
-
-            case 14:
-              _context.next = 6;
+              _context2.next = 16;
               break;
+
+            case 13:
+              _context2.prev = 13;
+              _context2.t1 = _context2["catch"](4);
+
+              _iterator2.e(_context2.t1);
 
             case 16:
-              _context.next = 21;
-              break;
-
-            case 18:
-              _context.prev = 18;
-              _context.t0 = _context["catch"](4);
-
-              _iterator2.e(_context.t0);
-
-            case 21:
-              _context.prev = 21;
+              _context2.prev = 16;
 
               _iterator2.f();
 
-              return _context.finish(21);
+              return _context2.finish(16);
 
-            case 24:
+            case 19:
               setObjects(walk);
 
-            case 25:
+            case 20:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
         }
-      }, _callee, null, [[4, 18, 21, 24]]);
+      }, _callee, null, [[4, 13, 16, 19]]);
     }))();
   }, [object]);
   return children([objects, setObjects]);

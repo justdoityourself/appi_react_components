@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {appiKeys} from 'appi_react'
+import {appiKeys,serialize} from 'appi_react'
 
 
 // https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
@@ -16,7 +16,7 @@ export default function Walk({children,object,path,parse,format, type,access})
         access = "public";
 
     if(!parse)
-        parse = (id)=>client.LookupId(type,id,access);
+        parse = (id)=>serialize(()=>client.LookupId(type,id,access));
 
     useEffect(()=>{
         (async ()=>{
@@ -31,9 +31,9 @@ export default function Walk({children,object,path,parse,format, type,access})
             let walk = {};
             for(const key of appiKeys(resolve))
             {
-                const resource = parse ? parse(key) : key;
+                const resource = parse ? await parse(key) : key;
 
-                const _far = await client.Far(resource);
+                const _far = await serialize(()=>client.Far(resource));
                 const far = JSON.parse(_far||"{}");
 
                 walk[key] = format ? format(far) : far;
