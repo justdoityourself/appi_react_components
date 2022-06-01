@@ -3,13 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = MailBase;
+exports.default = Theme;
 
 var _styles = require("@mui/material/styles");
 
 var _material = require("@mui/material");
 
 var _react = require("react");
+
+var _reactHooksGlobalState = require("react-hooks-global-state");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -25,16 +27,21 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function MailBase(_ref) {
+var _createGlobalState = (0, _reactHooksGlobalState.createGlobalState)({
+  dark: window.localStorage.dark == "true"
+}),
+    useGlobalState = _createGlobalState.useGlobalState;
+
+function Theme(_ref) {
   var children = _ref.children,
       primary = _ref.primary,
       secondary = _ref.secondary;
-  var shouldDark = (0, _material.useMediaQuery)('(prefers-color-scheme: dark)');
 
-  var _useState = (0, _react.useState)(window.localStorage.dark == "true" || shouldDark),
-      _useState2 = _slicedToArray(_useState, 2),
-      dark = _useState2[0],
-      _setDark = _useState2[1];
+  var _useGlobalState = useGlobalState('dark'),
+      _useGlobalState2 = _slicedToArray(_useGlobalState, 2),
+      dark = _useGlobalState2[0],
+      _setDark = _useGlobalState2[1]; //const shouldDark = useMediaQuery('(prefers-color-scheme: dark)');
+
 
   var setDark = function setDark(dark) {
     window.localStorage.dark = dark;
@@ -71,7 +78,7 @@ function MailBase(_ref) {
   }, [dark]);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_styles.ThemeProvider, {
     theme: theme,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_react.Fragment, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_material.CssBaseline, {}), children instanceof Function ? children({
         dark: dark,
         setDark: setDark

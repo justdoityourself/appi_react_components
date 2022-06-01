@@ -1,22 +1,20 @@
-import {Card,CardActions,CardContent,Button,TextField,Typography,Checkbox} from '@mui/material';
-import {Page} from 'appi_react_components'
+import {Page,TypedEvent} from 'appi_react_components'
+import {useAppi} from 'appi_react'
+import {List} from '@mui/material';
 
-//Most recent events per topic and filter
-export default function MailBase({page}) {
+export default function EventBase({topics}) {
+  const [user] = useAppi("@user");
+
   return (
-    <Page page={page}>
-      {({ currentBreakpoint }) => {
-        switch (currentBreakpoint) {
-          default:
-          case 'mobile':
-            return <Mobile />
-          case 'tablet':
-            return <Tablet />
-          case 'laptop':
-          case 'desktop':
-            return <Desktop />
-        }
-      }}
+    <Page page={user?.["~mail"]} format={e=>!topics ? e : ((e?.type in topics) ? e : undefined)}>
+      {({elements}) => {
+        return (      
+          <div className={'gvt'} style={{'--gr':'minmax(0px,1fr)','--gc':'minmax(0px,1fr)'}}>
+            <List sx={{ overflowY: "scroll", width: '100%', height:'100%', bgcolor: 'background.paper' }}>
+              {elements.map((e,i)=><TypedEvent key={i} event={e} />)}
+            </List>
+          </div>
+      )}}
     </Page>
   );
 }

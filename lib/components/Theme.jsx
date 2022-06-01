@@ -1,11 +1,16 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {CssBaseline,useMediaQuery} from '@mui/material';
+import {CssBaseline/*,useMediaQuery*/} from '@mui/material';
+import {useMemo} from 'react';
+import { createGlobalState } from 'react-hooks-global-state';
 
-import {useState,useMemo,Fragment} from 'react';
 
-export default function MailBase({children,primary,secondary}) {
-  const shouldDark = useMediaQuery('(prefers-color-scheme: dark)');
-  const [dark, _setDark] = useState(window.localStorage.dark == "true" || shouldDark);
+
+const { useGlobalState } = createGlobalState({dark:window.localStorage.dark == "true"});
+
+export default function Theme({children,primary,secondary}) {
+
+  const [dark, _setDark] = useGlobalState('dark');
+  //const shouldDark = useMediaQuery('(prefers-color-scheme: dark)');
 
   const setDark = dark => {
     window.localStorage.dark = dark;
@@ -43,9 +48,9 @@ export default function MailBase({children,primary,secondary}) {
 
   return ( 
   <ThemeProvider theme={theme}>
-    <Fragment>
+    <>
       <CssBaseline />
       {(children instanceof Function) ? children({dark,setDark}) : children}
-    </Fragment>
+    </>
   </ThemeProvider>);
 }

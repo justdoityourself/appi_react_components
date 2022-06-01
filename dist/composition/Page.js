@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Page;
 
-var _appi_react = require("appi_react");
-
 var _react = require("react");
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -33,13 +31,29 @@ function Page(_ref) {
       elements = _useState2[0],
       setElements = _useState2[1];
 
+  if (!format) format = function format(e) {
+    return e;
+  };
   (0, _react.useEffect)(function () {
-    //TODO AUTO MAP $history and previous pages
-    var _elements = []; //for()
+    var _elements = [];
+
+    if (!start && !count) {
+      for (var _i2 = 0, _Object$entries = Object.entries((page === null || page === void 0 ? void 0 : page["$para"]) || {}); _i2 < _Object$entries.length; _i2++) {
+        var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
+            idx = _Object$entries$_i[0],
+            element = _Object$entries$_i[1];
+
+        if (idx.startsWith('_')) continue;
+        if (format(element)) _elements.push(element);
+      }
+    } else {//TODO AUTO MAP $history and previous pages
+    }
+
+    setElements(_elements);
   }, [page, start, count]);
   return children instanceof Function ? children({
     elements: elements
-  }) : React.cloneElement(children, {
+  }) : /*#__PURE__*/(0, _react.cloneElement)(children, {
     elements: elements
   });
 }
