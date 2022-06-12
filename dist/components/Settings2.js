@@ -19,9 +19,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 function _Settings(_ref) {
   var _user$Public, _user$Public$profile, _user$Public2, _user$Public2$profile;
 
-  var dark = _ref.dark,
-      setDark = _ref.setDark,
-      setAction = _ref.setAction;
+  var useApp = _ref.useApp;
 
   var _useOptimistic = (0, _appi_react.useOptimistic)("@user"),
       user = _useOptimistic.store,
@@ -29,6 +27,11 @@ function _Settings(_ref) {
       flush = _useOptimistic.flush,
       dirty = _useOptimistic.dirty,
       clear = _useOptimistic.clear;
+
+  var _useApp = useApp(),
+      dark = _useApp.dark,
+      setDark = _useApp.setDark,
+      setAction = _useApp.setAction;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_material.Card, {
     sx: {

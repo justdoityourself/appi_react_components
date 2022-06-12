@@ -5,8 +5,10 @@ import { logout,useOptimistic } from 'appi_react'
 import { CirclePicker } from 'react-color';
        
 //This version uses the useOptimistic hook
-export default function _Settings({dark, setDark,setAction}) {
+export default function _Settings({useApp}) {
     const {store:user,setStore:setUser,flush,dirty,clear} = useOptimistic("@user")
+
+    const {dark, setDark,setAction} = useApp();
 
     return (
         <Card sx={{ minWidth: 320, maxWidth: 420 }}>

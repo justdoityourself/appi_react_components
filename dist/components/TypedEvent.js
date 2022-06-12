@@ -18,7 +18,6 @@ function TypedEvent(_ref) {
 
   switch (event === null || event === void 0 ? void 0 : (_event$contents = event.contents) === null || _event$contents === void 0 ? void 0 : _event$contents.type) {
     case "friend_request":
-      console.log(event);
       return /*#__PURE__*/(0, _jsxRuntime.jsx)(_appi_react_components.Far, {
         id: event.from,
         children: function children(user) {

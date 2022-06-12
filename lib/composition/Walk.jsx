@@ -15,7 +15,7 @@ export default function Walk({children,object,path,parse,format, type,access})
     if(!access)
         access = "public";
 
-    if(!parse)
+    if(!parse&&type!='real')
         parse = (id)=>serialize(()=>client.LookupId(type,id,access));
 
     useEffect(()=>{
@@ -31,7 +31,11 @@ export default function Walk({children,object,path,parse,format, type,access})
             let walk = {};
             for(const key of appiKeys(resolve))
             {
-                const resource = parse ? await parse(key) : key;
+                let resource;
+                if('real' == type)
+                    resource = `${key}.${access}`;
+                else
+                    resource = parse ? await parse(key) : key;
 
                 const _far = await serialize(()=>client.Far(resource));
                 const far = JSON.parse(_far||"{}");

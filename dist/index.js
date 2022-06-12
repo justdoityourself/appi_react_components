@@ -72,6 +72,12 @@ Object.defineProperty(exports, "Page", {
 Object.defineProperty(exports, "Plot", {
   enumerable: true,
   get: function get() {
+    return _Plot2.default;
+  }
+});
+Object.defineProperty(exports, "Plot1", {
+  enumerable: true,
+  get: function get() {
     return _Plot.default;
   }
 });
@@ -97,6 +103,18 @@ Object.defineProperty(exports, "SignUpBase1", {
   enumerable: true,
   get: function get() {
     return _SignUpBase.default;
+  }
+});
+Object.defineProperty(exports, "Table1", {
+  enumerable: true,
+  get: function get() {
+    return _Table.default;
+  }
+});
+Object.defineProperty(exports, "Tabs1", {
+  enumerable: true,
+  get: function get() {
+    return _Tabs.default;
   }
 });
 Object.defineProperty(exports, "Theme", {
@@ -174,6 +192,12 @@ var _Event = _interopRequireDefault(require("./components/Event"));
 
 var _TypedEvent = _interopRequireDefault(require("./components/TypedEvent"));
 
+var _Tabs = _interopRequireDefault(require("./components/Tabs1"));
+
+var _Plot = _interopRequireDefault(require("./components/Plot1"));
+
+var _Table = _interopRequireDefault(require("./components/Table1"));
+
 var _Appi = _interopRequireDefault(require("./composition/Appi"));
 
 var _Hook = _interopRequireDefault(require("./composition/Hook"));
@@ -192,7 +216,7 @@ var _Basic = _interopRequireDefault(require("./composition/Basic"));
 
 var _Page = _interopRequireDefault(require("./composition/Page"));
 
-var _Plot = _interopRequireDefault(require("./composition/Plot"));
+var _Plot2 = _interopRequireDefault(require("./composition/Plot"));
 
 var _Secure = _interopRequireDefault(require("./composition/Secure"));
 

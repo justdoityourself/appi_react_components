@@ -50,25 +50,23 @@ function Far(_ref) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              console.log(type, id, access);
-              _context.next = 3;
+              _context.next = 2;
               return (0, _appi_react.serialize)(function () {
                 return window.AppiClient.LookupId(type, id, access);
               });
 
-            case 3:
+            case 2:
               _id = _context.sent;
-              console.log(_id);
-              _context.next = 7;
+              _context.next = 5;
               return (0, _appi_react.serialize)(function () {
                 return window.AppiClient.Far(_id);
               });
 
-            case 7:
+            case 5:
               result = _context.sent;
               setFar(JSON.parse(result));
 
-            case 9:
+            case 7:
             case "end":
               return _context.stop();
           }

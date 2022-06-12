@@ -75,13 +75,14 @@ function Theme(_ref) {
 
       }
     });
-  }, [dark]);
+  }, [dark, primary, secondary]);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_styles.ThemeProvider, {
     theme: theme,
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_material.CssBaseline, {}), children instanceof Function ? children({
         dark: dark,
-        setDark: setDark
+        setDark: setDark,
+        theme: theme
       }) : children]
     })
   });

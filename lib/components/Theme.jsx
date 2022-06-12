@@ -43,14 +43,14 @@ export default function Theme({children,primary,secondary}) {
            */
         },
       }),
-    [dark],
+    [dark,primary,secondary],
   );
 
   return ( 
   <ThemeProvider theme={theme}>
     <>
       <CssBaseline />
-      {(children instanceof Function) ? children({dark,setDark}) : children}
+      {(children instanceof Function) ? children({dark,setDark,theme}) : children}
     </>
   </ThemeProvider>);
 }

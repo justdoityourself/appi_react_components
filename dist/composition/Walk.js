@@ -50,7 +50,7 @@ function Walk(_ref) {
 
   if (!type) type = "user";
   if (!access) access = "public";
-  if (!parse) parse = function parse(id) {
+  if (!parse && type != 'real') parse = function parse(id) {
     return (0, _appi_react.serialize)(function () {
       return client.LookupId(type, id, access);
     });
@@ -91,36 +91,49 @@ function Walk(_ref) {
                     switch (_context.prev = _context.next) {
                       case 0:
                         key = _step2.value;
+                        resource = void 0;
 
-                        if (!parse) {
-                          _context.next = 7;
+                        if (!('real' == type)) {
+                          _context.next = 6;
                           break;
                         }
 
-                        _context.next = 4;
-                        return parse(key);
-
-                      case 4:
-                        _context.t0 = _context.sent;
-                        _context.next = 8;
+                        resource = "".concat(key, ".").concat(access);
+                        _context.next = 14;
                         break;
 
-                      case 7:
+                      case 6:
+                        if (!parse) {
+                          _context.next = 12;
+                          break;
+                        }
+
+                        _context.next = 9;
+                        return parse(key);
+
+                      case 9:
+                        _context.t0 = _context.sent;
+                        _context.next = 13;
+                        break;
+
+                      case 12:
                         _context.t0 = key;
 
-                      case 8:
+                      case 13:
                         resource = _context.t0;
-                        _context.next = 11;
+
+                      case 14:
+                        _context.next = 16;
                         return (0, _appi_react.serialize)(function () {
                           return client.Far(resource);
                         });
 
-                      case 11:
+                      case 16:
                         _far = _context.sent;
                         far = JSON.parse(_far || "{}");
                         walk[key] = format ? format(far) : far;
 
-                      case 14:
+                      case 19:
                       case "end":
                         return _context.stop();
                     }
