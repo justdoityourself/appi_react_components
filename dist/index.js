@@ -15,6 +15,12 @@ Object.defineProperty(exports, "Basic", {
     return _Basic.default;
   }
 });
+Object.defineProperty(exports, "DebugSettings", {
+  enumerable: true,
+  get: function get() {
+    return _DebugSettings.default;
+  }
+});
 Object.defineProperty(exports, "Event", {
   enumerable: true,
   get: function get() {
@@ -173,6 +179,8 @@ var _SignUpBase = _interopRequireDefault(require("./components/SignUpBase1"));
 var _Settings = _interopRequireDefault(require("./components/Settings1"));
 
 var _Settings2 = _interopRequireDefault(require("./components/Settings2"));
+
+var _DebugSettings = _interopRequireDefault(require("./components/DebugSettings"));
 
 var _Theme = _interopRequireDefault(require("./components/Theme"));
 

@@ -22,7 +22,7 @@ export default function _Settings({useApp}) {
                     <TextField
                         label="User Name"
                         size="small"
-                        value={user?.['~public']?.profile?.name}
+                        value={user?.['~public']?.profile?.name||""}
                         style={{width:'100%'}}
                         onChange={e=>{setUser({"~public":{profile:{name:e.target.value}}})}}
 
@@ -40,7 +40,7 @@ export default function _Settings({useApp}) {
                         <h5 style={{margin:'8px 0px'}}>Dark Mode</h5>
                         <span></span>
                         <Switch
-                            checked={dark}
+                            checked={dark||false}
                             onChange={()=>setDark(!dark)}
                             label="Dark Mode"
                         />
@@ -57,7 +57,7 @@ export default function _Settings({useApp}) {
             <div className={'gvt'} style={{'--gr':'1fr','--gc':'1fr auto auto'}}>
                 <span></span>
                 {
-                    dirty ? <Button size="small" onClick={() => flush()}>Save</Button> : null
+                    dirty ? <Button size="small" onClick={() => flush(true)}>Save</Button> : null
                 }
                 <Button size="small" onClick={() => {
                     clear();

@@ -60,7 +60,7 @@ function _Settings(_ref) {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_material.TextField, {
           label: "User Name",
           size: "small",
-          value: user === null || user === void 0 ? void 0 : (_user$Public = user['~public']) === null || _user$Public === void 0 ? void 0 : (_user$Public$profile = _user$Public.profile) === null || _user$Public$profile === void 0 ? void 0 : _user$Public$profile.name,
+          value: (user === null || user === void 0 ? void 0 : (_user$Public = user['~public']) === null || _user$Public === void 0 ? void 0 : (_user$Public$profile = _user$Public.profile) === null || _user$Public$profile === void 0 ? void 0 : _user$Public$profile.name) || "",
           style: {
             width: '100%'
           },
@@ -93,7 +93,7 @@ function _Settings(_ref) {
             },
             children: "Dark Mode"
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_material.Switch, {
-            checked: dark,
+            checked: dark || false,
             onChange: function onChange() {
               return setDark(!dark);
             },
@@ -134,7 +134,7 @@ function _Settings(_ref) {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {}), dirty ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_material.Button, {
           size: "small",
           onClick: function onClick() {
-            return flush();
+            return flush(true);
           },
           children: "Save"
         }) : null, /*#__PURE__*/(0, _jsxRuntime.jsx)(_material.Button, {
